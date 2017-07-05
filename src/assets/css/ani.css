@@ -1,0 +1,19 @@
+.fade-enter-active{-webkit-transition: opacity .5s;transition: opacity .5s}
+.fade-enter{opacity: 0}
+
+.slide-vertical-enter-active, .slide-vertical-leave-active {transition: all .6s ease;-webkit-transition: all .6s ease;}
+.slide-vertical-enter{opacity: 0;-webkit-transform: translate(0, 30px);transform: translate(0, 30px);}
+.slide-vertical-leave-active {opacity: 0;opacity: 0;-webkit-transform: translate(0, 30px);transform: translate(0, 30px);}
+
+.slide-level-enter-active, .slide-vertical-leave-active {transition: all .6s ease;-webkit-transition: all .6s ease;}
+.slide-level-enter{opacity: 0;-webkit-transform: translate(30px, 0);transform: translate(30px, 0);}
+.slide-level-leave-active {opacity: 0;-webkit-transform: translate(-30px, 0);transform: translate(-30px, 0);}
+
+.slide-up-enter-active{transition: all .6s ease;-webkit-transition: all .6s ease;}
+.slide-up-enter{opacity: 0;-webkit-transform: translate(0, 30px);transform: translate(0, 30px);}
+.slide-right-enter-active{transition: all .6s ease;-webkit-transition: all .6s ease;}
+.slide-right-enter{opacity: 0;-webkit-transform: translate(30px, 0);transform: translate(30px, 0);}
+.slide-down-enter-active{transition: all .6s ease;-webkit-transition: all .6s ease;}
+.slide-down-enter{opacity: 0;-webkit-transform: translate(0, -30px);transform: translate(0, -30px);}
+.slide-left-enter-active{transition: all .6s ease;-webkit-transition: all .6s ease;}
+.slide-left-enter{opacity: 0;-webkit-transform: translate(-30px, 0);transform: translate(-30px, 0);}
