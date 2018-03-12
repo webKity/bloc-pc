@@ -43,7 +43,7 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        loader: 'babel-loader?presets[]=es2015',
         include: [resolve('src'), resolve('test')]
       },
       {

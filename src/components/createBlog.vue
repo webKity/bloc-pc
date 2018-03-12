@@ -30,6 +30,7 @@
 <script>
 import api from './../api/api.js'
 import { mavonEditor } from 'mavon-editor'
+import 'mavon-editor/dist/css/index.css'
 import blogSelect from './frame/select/select.vue'
 
 export default {
@@ -75,7 +76,8 @@ export default {
   methods: {
     async addBlog () {
       let data = await this.createPostAPI(this.addBlogForm)
-      if (data.retCode === 200) {
+      if (data === '发布成功') {
+        this.$tip(data)
         this.$router.push('/index')
       }
     },

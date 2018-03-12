@@ -24,7 +24,7 @@ let api = {
         } else if (params.password !== params.confirmPassword) {
           this.$tip('密码不一致！')
         } else {
-          let data = (await this.$http.post('/api/register', {}, {params: params})).body
+          let data = (await this.$http.post('/api/user/register', {}, {params: params})).body
           this.$tip(data.retMessage)
           if (data.retCode === 200) {
             this.$router.push('/login')
@@ -51,12 +51,9 @@ let api = {
         } else if (params.password.length < 6 || params.password.length > 16) {
           this.$tip('密码长度为6到16个字符！')
         } else {
-          let data = (await this.$http.get('/api/login', {params: params})).body
-          this.$tip(data.retMessage)
-          if (data.retCode === 200) {
-            this.$store.commit('change_user', data.result)
-            this.$router.push('/index')
-          }
+          let data = (await this.$http.get('/api/user/login', {params: params})).body
+          this.$store.commit('change_user', data)
+          this.$router.push('/index')
         }
       } catch (e) {
         if (typeof e.body.error === 'string') {
@@ -79,7 +76,7 @@ let api = {
         } else if (params.content === '') {
           this.$tip('正文不能为空！')
         } else {
-          data = (await this.$http.post('/api/post/create', {}, {
+          data = (await this.$http.post('/api/blog/create', {}, {
             headers: {
               token: this.user.token
             },
@@ -99,7 +96,9 @@ let api = {
     },
     async queryBlogListAPI (params) {
       try {
-        let data = (await this.$http.get('/api/post/query/' + params.type + '/' + params.page + '/' + params.size)).body
+        let data = (await this.$http.get('/api/blog/query', {
+          params: params
+        })).body
         return data
       } catch (e) {
         if (typeof e.body.error === 'string') {
@@ -112,14 +111,10 @@ let api = {
     },
     async queryBlogInfAPI (params) {
       try {
-        let data = (await this.$http.get('/api/post/query/' + params.id)).body
+        let data = (await this.$http.get('/api/blog/detail/' + params.id)).body
         return data
       } catch (e) {
-        if (typeof e.body.error === 'string') {
-          this.$tip(e.body.error)
-        } else {
-          this.$tip('服务器内部错误!')
-        }
+        this.$tip(e.body.message)
         console.log(e)
       }
     }

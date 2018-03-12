@@ -13,10 +13,7 @@ export const formatDate = function (date) {
     let year = oldDate.getFullYear()
     let month = oldDate.getMonth() + 1
     let day = oldDate.getDate()
-    let hours = oldDate.getHours()
-    let min = oldDate.getMinutes()
-    let sec = oldDate.getSeconds()
-    let newDate = year + '-' + month + '-' + day + ' ' + hours + ':' + min + ':' + sec
+    let newDate = year + '-' + month + '-' + day
     return newDate
   }
 }

@@ -18,8 +18,8 @@ export default {
   components: {blogPaging, postItem},
   props: {
     type: {
-      type: Number,
-      default: -1
+      type: [Number, String],
+      default: ''
     }
   },
   data () {
@@ -33,13 +33,15 @@ export default {
   methods: {
     async queryBlogs () {
       let params = {}
-      params.type = this.type
-      params.page = this.page
-      params.size = this.size
-      let data = await this.queryBlogListAPI(params)
-      if (data.retCode === 200) {
-        this.totalCount = data.totle
-        this.posts = data.result
+      if (this.type !== '') {
+        params.type = this.type
+      }
+      params.pageNum = this.page
+      params.pageSize = this.size
+      try {
+        this.posts = await this.queryBlogListAPI(params)
+      } catch (e) {
+        console.log(e)
       }
     },
     changePage (curentPage) {

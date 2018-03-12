@@ -11,7 +11,7 @@
     <blog-body class="container">
       <blog-tabbar slot="left" :labels="labels" :size="barSize">
         <blog-tabbar-item :name="0">
-          <post-list :type="-1"></post-list>
+          <post-list></post-list>
         </blog-tabbar-item>
         <blog-tabbar-item :name="1">
           <post-list :type="2"></post-list>

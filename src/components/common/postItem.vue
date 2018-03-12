@@ -4,7 +4,7 @@
     <div class="post-inf ml15 fl">
       <div class="light-gray-color font13">
         <span class="mr10">{{ post.name }}</span>
-        <span>{{ post.updata_time | formatDate }}</span>
+        <span>{{ post.update_time | formatDate }}</span>
       </div>
       <div class="font16 ellipsis" style="margin-top:8px;">{{ post.title }}</div>
     </div>
